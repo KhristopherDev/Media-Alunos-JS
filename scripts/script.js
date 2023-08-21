@@ -1,4 +1,5 @@
 const subButton = document.getElementById('subButton');
+const cleanButton = document.getElementById('cleanButton');
 const atvs = [];
 const warning = document.getElementById('warning');
 const atvsBody = document.querySelector('tbody');
@@ -6,11 +7,21 @@ const mediaElement = document.getElementById('media');
 const aprovElement = document.getElementById('aprovacaoMedia');
 const arrayMedia = [];
 
-let media = window.prompt("Escolha um valor para sua média: ");
+let atvForm;
+
+// concertar esse loop
+do {
+  let media =  window.prompt("Escolha um valor para sua média: ");
+  let typeMedia = Number(media)
+  console.log(typeMedia)
+} while (isNaN(typeMedia));
+
+
+ 
 
 subButton.addEventListener("click", function (event) {
     event.preventDefault();
-    let atvForm = document.getElementById('notaForm');
+    atvForm = document.getElementById('notaForm');
     let atvGrade = parseInt(atvForm.atvGrade.value);
 
     let type = [typeof(atvForm.atvName.value), typeof(atvGrade)];
@@ -59,10 +70,18 @@ subButton.addEventListener("click", function (event) {
 })
 
 
+function clicaLimpa(e){
+  e.preventDefault();
+  atvsBody.innerHTML = '';
+  arrayMedia.length = 0;
+  mediaElement.innerText = '---';
+  aprovElement.innerText = '---';
+  atvForm.atvGrade.value = '';
+  atvForm.atvName.value = '';
+}
 
 
-
-
+cleanButton.addEventListener("click",clicaLimpa)
 
 //let valor = document.getElementById('texto').value;
 //let textoFinal = document.getElementById('test');
