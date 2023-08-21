@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles/style.css" />
+  <title>Título</title>
+</head>
+
+<body>
+  <section id="contentAlign">
+    <div id="content">
+      <header class="contentHeader">
+        <img width="40px" src="sauce/logo.png" alt="logo" />
+        <h1>Formulário</h1>
+      </header>
+      <form id="notaForm">
+        <div>
+          <label class="labelForm">Nome da atividade:</label>
+          <input class="inputForm" maxlength="23" required id="atividade" type="text" placeholder="Escreva aqui"
+            name="atvName" />
+        </div>
+        <div>
+          <label class="labelForm">Nota:</label>
+          <input class="inputForm" min="0" max="10" placeholder="0" required id="nota" type="number" name="atvGrade" />
+        </div>
+        <div style="display: flex; align-items: center;">
+          <button class="buttonsForm" id="subButton" type="submit">
+            Enviar
+          </button>
+          <button class="buttonsForm" type="submit">Limpar</button>
+          <div id="warning"></div>
+        </div>
+      </form>
+      <table>
+        <thead>
+          <th>Nome da Atividade</th>
+          <th>Nota</th>
+          <th>Aprovação</th>
+        </thead>
+        <tbody></tbody>
+        <tfoot>
+          <td>Média</td>
+          <td id="media">---</td>
+          <td id="aprovacaoMedia">---</td>
+        </tfoot>
+      </table>
+    </div>
+  </section>
+
+  <script src="scripts/script.js"></script>
+</body>
+
+</html>
