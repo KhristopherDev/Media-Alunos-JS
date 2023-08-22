@@ -6,16 +6,16 @@ const atvsBody = document.querySelector('tbody');
 const mediaElement = document.getElementById('media');
 const aprovElement = document.getElementById('aprovacaoMedia');
 const arrayMedia = [];
-
+let media;
+let aprovacaoMedia = ""
 let atvForm;
 
-// concertar esse loop
-do {
-  let media =  window.prompt("Escolha um valor para sua média: ");
-  let typeMedia = Number(media)
-  console.log(typeMedia)
-} while (isNaN(typeMedia));
-
+function inserirMedia(){
+  media =  window.prompt("Escolha um valor para sua média: ");
+  console.log(media)
+  let typeMedia = Number(media);
+  if(isNaN(typeMedia)|| media == null)inserirMedia();
+}
 
  
 
@@ -45,10 +45,21 @@ subButton.addEventListener("click", function (event) {
 
         mediaElement.innerText = somaMedia;
 
+        // concertar as cores de borda
+        const identificar = (classe) => {
+          if(atvsBody.classList.contains(classe)){
+            atvsBody.classList.remove(classe)
+          }
+        }
+
         if (somaMedia < media) {
           aprovacaoMedia = "Fail!";
+          identificar("aprovado");
+          atvsBody.classList.add("reprovado");
         }else{
           aprovacaoMedia = "Yes!";
+          identificar("reprovado");
+          atvsBody.classList.add("aprovado");
         }
 
         aprovElement.innerText = aprovacaoMedia;
@@ -65,6 +76,10 @@ subButton.addEventListener("click", function (event) {
         atvs.splice(0);
         atvs.splice(1);
         warning.innerHTML = '';
+
+
+        console.log(atvsBody.childNodes)
+        console.log(atvsBody.children)
     }
 
 })
@@ -82,6 +97,7 @@ function clicaLimpa(e){
 
 
 cleanButton.addEventListener("click",clicaLimpa)
+window.onload = inserirMedia
 
 //let valor = document.getElementById('texto').value;
 //let textoFinal = document.getElementById('test');

@@ -78,7 +78,13 @@ html, body {
 #nota {
     width: 50px;
 }
-
+.aprovado{
+    border-bottom: solid rgb(39, 245, 12);
+    border-top: solid rgb(39, 245, 12);
+}
+.reprovado{
+    border: solid rgb(255, 0, 0);
+}
 table {
     display: flex;
     flex-direction: column;
