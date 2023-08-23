@@ -6,6 +6,7 @@ const atvsBody = document.querySelector('tbody');
 const mediaElement = document.getElementById('media');
 const aprovElement = document.getElementById('aprovacaoMedia');
 const arrayMedia = [];
+
 let media;
 let aprovacao = '';
 let aprovacaoMedia = '';
@@ -14,6 +15,7 @@ let atvForm;
 function inserirMedia() {
     media = parseFloat(prompt("Escolha um valor para a média: "));
     if (isNaN(media) || media === null) {
+        window.alert("Insira valores válidos");
         inserirMedia();
     }
 }
@@ -23,7 +25,8 @@ subButton.addEventListener("click", function (event) {
     atvForm = document.getElementById('notaForm');
     let atvGrade = parseFloat(atvForm.atvGrade.value);
 
-    if (atvForm.atvName.value === '' || isNaN(atvGrade) || atvGrade === 0) {
+    console.log(atvGrade)
+    if (atvForm.atvName.value === '' || isNaN(atvGrade) || atvGrade < 0) {
         warning.innerHTML = `<span style="color: red;">Insira valores válidos.</span>`;
     } else {
         atvs.push(atvForm.atvName.value);
@@ -48,19 +51,22 @@ subButton.addEventListener("click", function (event) {
         } else {
             aprovacaoMedia = "Yes!";
         }
+     
+        let classe;
 
         if (atvGrade < media) {
             aprovacao = "Fail!";
+            classe = "reprovado";
         } else {
             aprovacao = "Yes!";
+            classe = "aprovado";
         }
         
-        // concertar o sistema de cores
        
         
         aprovElement.innerText = aprovacaoMedia;
 
-        atvsBody.insertAdjacentHTML("afterbegin", `<tr> <td>${atvs[0]}</td> <td>${atvs[1]}</td> <td>${aprovacao}</td> </tr> `);
+        atvsBody.insertAdjacentHTML("afterbegin", `<tr class="${classe}"> <td>${atvs[0]}</td> <td>${atvs[1]}</td> <td>${aprovacao}</td> </tr> `);
         atvs.length = 0;
         warning.innerHTML = '';
 

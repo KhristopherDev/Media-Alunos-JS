@@ -79,12 +79,10 @@ html, body {
     width: 50px;
 }
 .aprovado{
-    border-bottom: solid rgb(39, 245, 12);
-    border-top: solid rgb(39, 245, 12);
+    background-color: rgba( 0, 255, 0, 0.5);
 }
 .reprovado{
-    border-bottom: solid rgb(255, 0, 0);
-    border-top: solid rgb(255, 0, 0);
+    background-color: rgba( 255, 0, 0, 0.5);
 }
 table {
     display: flex;
